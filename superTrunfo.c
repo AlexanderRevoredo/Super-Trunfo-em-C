@@ -3,7 +3,8 @@
 
 int main() {
     char cidade1[50], cidade2[50];
-    int populacao1, populacao2, pontosturisticos1, pontosturisticos2;
+    unsigned long int populacao1, populacao2;
+    int pontosturisticos1, pontosturisticos2;
     float area1, area2, pib1, pib2, densidadepopulacional1, densidadepopulacional2, pibpercapita1, pibpercapita2;
 
     
@@ -17,7 +18,7 @@ int main() {
     cidade1[strcspn(cidade1, "\n")] = '\0';
     
     printf("Qual a populacao? ");
-    scanf("%d", &populacao1);
+    scanf("%lu", &populacao1); // %lu para unsigned long int
     
     printf("Qual a area do Estado? ");
     scanf("%f", &area1);
@@ -36,7 +37,7 @@ int main() {
     cidade2[strcspn(cidade2, "\n")] = '\0';
     
     printf("Qual a populacao? ");
-    scanf("%d", &populacao2);
+    scanf("%lu", &populacao2);
     
     printf("Qual a area do Estado? ");
     scanf("%f", &area2);
@@ -52,8 +53,8 @@ int main() {
     densidadepopulacional1 = populacao1 / area1;
     densidadepopulacional2 = populacao2 / area2;
 
-    pibpercapita1 = (pib1 * 1000000000) / populacao1; // Já que o pib está em bilhões, multiplica por bilhão
-    pibpercapita2 = (pib2 * 1000000000) / populacao2;
+    pibpercapita1 = (pib1 * 1000000000) / (float)populacao1; // Já que o pib está em bilhões, multiplica por bilhão
+    pibpercapita2 = (pib2 * 1000000000) / (float)populacao2;
 
     // Calculo do Super Poder
     float superpoder1 = populacao1 + area1 + pib1 + pontosturisticos1 + pibpercapita1 + (1/densidadepopulacional1);
@@ -68,7 +69,7 @@ int main() {
     printf("Estado A\n");
     printf("Codigo: A01\n");
     printf("Nome da Cidade: %s\n", cidade1);
-    printf("Populacao: %d\n", populacao1);
+    printf("Populacao: %lu\n", populacao1);
     printf("Area: %.2f km²\n", area1);
     printf("PIB: %.2f bilhoes de reais\n", pib1);
     printf("Numero de Pontos Turisticos: %d\n", pontosturisticos1);
@@ -84,7 +85,7 @@ int main() {
     printf("Estado B\n");
     printf("Codigo: B02\n");
     printf("Nome da Cidade: %s\n", cidade2);
-    printf("Populacao: %d\n", populacao2);
+    printf("Populacao: %lu\n", populacao2);
     printf("Area: %.2f km²\n", area2);
     printf("PIB: %.2f bilhoes de reais\n", pib2);
     printf("Numero de Pontos Turisticos: %d\n", pontosturisticos2);
